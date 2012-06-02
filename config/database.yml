@@ -19,11 +19,7 @@ test:
   timeout: 5000
 
 production:
-  adapter: mysql
-  <% require 'cfruntime/properties' %>
-  <% db_svc = CFRuntime::CloudApp.service_props('mysql') %>
-  database: <%= db_svc[:database] rescue 'bookshelf_production' %>
-  username: <%= db_svc[:username] rescue 'root' %>
-  password: <%= db_svc[:password] rescue '' %>
-  host: <%= db_svc[:host] rescue 'localhost' %>
-  port: <%= db_svc[:port] rescue '3306' %>
+  adapter: sqlite3
+  database: db/production.sqlite3
+  pool: 5
+  timeout: 5000
